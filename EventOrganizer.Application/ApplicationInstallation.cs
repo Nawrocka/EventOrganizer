@@ -1,4 +1,5 @@
 ﻿using EventOrganizer.Application.Mapper;
+using EventOrganizer.Application.Services.EventFunctions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace EventOrganizer.Application
             var mapper = config.CreateMapper();
 
             services.AddSingleton(mapper);
+            services.AddScoped<IEventService, EventService>();
 
             return services;
         }

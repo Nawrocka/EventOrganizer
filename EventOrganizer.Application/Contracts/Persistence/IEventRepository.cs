@@ -10,7 +10,7 @@ namespace EventOrganizer.Application.Contracts.Persistence
     public interface IEventRepository
     {
         Task AddAsync(Event entity);
-        void DeleteAsync(Event entity);
+        void Delete(Event entity);
         void UpdateMaxParticipants(int eventId);
         Task<IReadOnlyList<Event>> GetAllAsync();
         Task<Event> GetByIdAsync(int id);

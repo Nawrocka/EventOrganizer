@@ -22,7 +22,7 @@ namespace EventOrganizer.PersistenceEF.Repositories
             await _dbContext.Events.AddAsync(entity);
         }
 
-        public void DeleteAsync(Event entity)
+        public void Delete(Event entity)
         {
             _dbContext.Events.Remove(entity);
         }
