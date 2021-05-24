@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EventOrganizer.Application.Contracts.Persistence;
 using EventOrganizer.Application.ModelDTO;
+using EventOrganizer.Application.Services.Validation;
 using EventOrganizer.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -21,13 +22,20 @@ namespace EventOrganizer.Application.Services.EventFunctions
             _mapper = mapper;
         }
 
-        public async Task Create(EventDTO appointment)
+        public async Task<EventDTOResponse> Create(EventDTO appointment)
         {
             var mappedEvent = _mapper.Map<Event>(appointment);
             //Fluent validation
-            //response messages/code return
+            var validator = new EventDTOValidator();
+            var validatorResult = await validator.ValidateAsync(appointment);
+
+            if (!validatorResult.IsValid)
+                return new EventDTOResponse(validatorResult);
+            
             await _unitOfWork.Events.AddAsync(mappedEvent);
             await _unitOfWork.Events.Save();
+
+            return new EventDTOResponse("Added event with success");
         }
 
         public async Task<IReadOnlyList<EventDTO>> GetAll()

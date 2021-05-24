@@ -2,6 +2,7 @@
 using EventOrganizer.Application.Contracts.Persistence;
 using EventOrganizer.Application.ModelDTO;
 using EventOrganizer.Application.Services.EventFunctions;
+using EventOrganizer.Application.Services.Validation;
 using EventOrganizer.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -23,10 +24,10 @@ namespace EventOrganizer.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] EventDTO appointment)
+        public async Task<ActionResult<EventDTOResponse>> Create([FromBody] EventDTO appointment)
         {
-            await _eventService.Create(appointment);
-            return NoContent();
+            var response = await _eventService.Create(appointment);
+            return Ok(response);
         }
 
         [HttpGet]
