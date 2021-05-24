@@ -46,7 +46,6 @@ namespace EventOrganizer.API.Controllers
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<EventWithParticipantsDTO>>> GetAllWithParticipants()
         {
-            //var listOFParticipants = new List<ParticipantsDTO>();
             var events = await _unitOfWork.Events.GetAllAsync();
             var eventParticipantList = await _unitOfWork.EventsParticipants.GetAllAsync();
             var participants = await _unitOfWork.Participants.GetAllAsync();
@@ -89,5 +88,6 @@ namespace EventOrganizer.API.Controllers
         //    var eventToMap = await _unitOfWork.Events.GetByIdAsync(id);
         //    return _mapper.Map<EventDTO>(eventToMap);
         //}
+
     }
 }

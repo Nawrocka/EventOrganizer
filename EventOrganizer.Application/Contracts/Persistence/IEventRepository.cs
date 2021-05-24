@@ -11,6 +11,7 @@ namespace EventOrganizer.Application.Contracts.Persistence
     {
         Task AddAsync(Event entity);
         void DeleteAsync(Event entity);
+        void UpdateMaxParticipants(int eventId);
         Task<IReadOnlyList<Event>> GetAllAsync();
         Task<Event> GetByIdAsync(int id);
         Task Save();

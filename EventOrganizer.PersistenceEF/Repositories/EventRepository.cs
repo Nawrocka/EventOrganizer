@@ -36,6 +36,13 @@ namespace EventOrganizer.PersistenceEF.Repositories
         {
             return await _dbContext.Events.FindAsync(id);
         }
+        public void UpdateMaxParticipants(int eventId)
+        {
+            var appointment = _dbContext.Events.FirstOrDefault(e=>e.Id==eventId);
+            appointment.MaxParticipants++;
+
+            _dbContext.Entry(appointment).State = EntityState.Modified;
+        }
         public async Task Save()
         {
             await _dbContext.SaveChangesAsync();

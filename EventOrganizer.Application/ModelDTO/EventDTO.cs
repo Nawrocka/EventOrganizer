@@ -13,5 +13,6 @@ namespace EventOrganizer.Application.ModelDTO
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public TimeSpan Duration { get; set; }
+        public int MaxParticipants { get; set; }
     }
 }

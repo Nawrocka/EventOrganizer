@@ -4,14 +4,16 @@ using EventOrganizer.PersistenceEF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventOrganizer.PersistenceEF.Migrations
 {
     [DbContext(typeof(EventOrganizerContext))]
-    partial class EventOrganizerContextModelSnapshot : ModelSnapshot
+    [Migration("20210524163028_Event_Add_MaxParticipants")]
+    partial class Event_Add_MaxParticipants
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

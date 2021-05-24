@@ -15,7 +15,7 @@ namespace EventOrganizer.PersistenceEF.Configuration
         {
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Title).IsRequired();
-            builder.HasIndex(e => e.Title).IsUnique();
+            builder.HasIndex(e => e.Title).IsUnique();            
         }
     }
 }

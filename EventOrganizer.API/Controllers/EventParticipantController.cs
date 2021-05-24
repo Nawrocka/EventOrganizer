@@ -33,21 +33,58 @@ namespace EventOrganizer.API.Controllers
 
             var eventParticipant = new EventParticipant()
             {
-                EventId = participantToSignUp.EventId,
+                EventId = participantToSignUp.EventId,                
                 ParticipantId = thisParticipantId
             };
 
             await _unitOfWork.EventsParticipants.AddAsync(eventParticipant);
             await _unitOfWork.EventsParticipants.Save();
-
+                        
+            _unitOfWork.Events.UpdateMaxParticipants(participantToSignUp.EventId);
+            await _unitOfWork.Events.Save();
+                        
             return NoContent();
         }
+
+        //[HttpPost(Name = "SignUp")]
+        //public async Task<ActionResult> SignUp([FromBody] ParticipantSignUpDTO participantToSignUp)
+        //{
+        //    var participants = await _unitOfWork.Participants.GetAllAsync();
+
+        //    //Czy user o takim email istnieje: nie->to go dodaj
+        //    if (!participants.Any(p => p.Email == participantToSignUp.Email))
+        //    {
+        //        var mappedParticipant = _mapper.Map<ParticipantDTO>(participantToSignUp);
+
+        //        await new ParticipantController(_unitOfWork, _mapper).Create(mappedParticipant);
+
+        //        await CreateNewSignUp(participantToSignUp);
+
+        //        return NoContent();
+        //    }
+        //    else
+        //    {
+        //        //zakładam, że event istnieje i jest poprawny, ponieważ na froncie
+        //        //będzie on wybierany z select listy, czy coś, a nie wprowadzany ręcznie przez usera
+        //        await CreateNewSignUp(participantToSignUp);
+        //        return NoContent();
+        //    }
+        //}
 
         [HttpPost(Name = "SignUp")]
         public async Task<ActionResult> SignUp([FromBody] ParticipantSignUpDTO participantToSignUp)
         {
+            //czy event ma >= 25 participants
+            var appopintmant = _unitOfWork.Events.GetAllAsync().Result.FirstOrDefault(e => e.Id == participantToSignUp.EventId);
+            if(appopintmant.MaxParticipants >= 25)
+            {
+                await Task.CompletedTask;
+                return NoContent();
+            }
+            //
             var participants = await _unitOfWork.Participants.GetAllAsync();
 
+            //Czy user o takim email istnieje: nie->to go dodaj
             if (!participants.Any(p => p.Email == participantToSignUp.Email))
             {
                 var mappedParticipant = _mapper.Map<ParticipantDTO>(participantToSignUp);

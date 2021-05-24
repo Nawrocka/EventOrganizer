@@ -12,5 +12,6 @@ namespace EventOrganizer.Domain.Entities
         public DateTime StartDate { get; set; }
         public TimeSpan Duration { get; set; }
         public ICollection<EventParticipant> EventParticipants { get; set; } = new List<EventParticipant>();
+        public int MaxParticipants { get; set; }
     }
 }

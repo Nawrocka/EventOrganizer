@@ -22,7 +22,8 @@ namespace EventOrganizer.PersistenceEF.Configuration
                     na ostatnim spotkaniu z cyklu. Taka agendowa klamra wyczerpie temat RESTful API na wieki, a przynajmniej 
                     do kolejnego nowego pomysłu, zmiany wprowadzonej w świat IT.",
                     StartDate = DateTime.Now.AddMonths(2),
-                    Duration = new TimeSpan(2, 0, 0)
+                    Duration = new TimeSpan(2, 0, 0),
+                    MaxParticipants = 2
                 },
 
                 new Event()
@@ -35,7 +36,8 @@ namespace EventOrganizer.PersistenceEF.Configuration
                     Proin pulvinar elit eu mauris pharetra placerat. Proin ullamcorper hendrerit mi ac lacinia. 
                     Quisque elementum aliquet diam non eleifend. Curabitur ultrices mi enim, aliquet lacinia est fermentum et. Cras ut lorem risus.",
                     StartDate = DateTime.Now.AddMonths(3),
-                    Duration = new TimeSpan(4, 0, 0)
+                    Duration = new TimeSpan(4, 0, 0),
+                    MaxParticipants = 0
                 },
 
                 new Event()
@@ -48,7 +50,8 @@ namespace EventOrganizer.PersistenceEF.Configuration
                     Proin pulvinar elit eu mauris pharetra placerat. Proin ullamcorper hendrerit mi ac lacinia. 
                     Quisque elementum aliquet diam non eleifend. Curabitur ultrices mi enim, aliquet lacinia est fermentum et. Cras ut lorem risus.",
                     StartDate = DateTime.Now.AddMonths(5),
-                    Duration = new TimeSpan(2, 15, 0)
+                    Duration = new TimeSpan(2, 15, 0),
+                    MaxParticipants = 2
                 },
 
                 new Event()
@@ -61,7 +64,8 @@ namespace EventOrganizer.PersistenceEF.Configuration
                     Proin pulvinar elit eu mauris pharetra placerat. Proin ullamcorper hendrerit mi ac lacinia. 
                     Quisque elementum aliquet diam non eleifend. Curabitur ultrices mi enim, aliquet lacinia est fermentum et. Cras ut lorem risus.",
                     StartDate = DateTime.Now.AddMonths(3).AddDays(6),
-                    Duration = new TimeSpan(2, 30, 0)
+                    Duration = new TimeSpan(2, 30, 0),
+                    MaxParticipants = 3
                 },
 
                 new Event()
@@ -74,7 +78,22 @@ namespace EventOrganizer.PersistenceEF.Configuration
                     Proin pulvinar elit eu mauris pharetra placerat. Proin ullamcorper hendrerit mi ac lacinia. 
                     Quisque elementum aliquet diam non eleifend. Curabitur ultrices mi enim, aliquet lacinia est fermentum et. Cras ut lorem risus.",
                     StartDate = DateTime.Now.AddMonths(3).AddDays(20).AddHours(5),
-                    Duration = new TimeSpan(3, 45, 0)
+                    Duration = new TimeSpan(3, 45, 0),
+                    MaxParticipants = 3
+                },
+
+                new Event()
+                {
+                    Id = 6,
+                    Title = "Seeding data to test MaxParticipants prop - it doesn't have tied real participants",
+                    Description = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eu felis mattis, viverra nibh in,
+                        condimentum ex. In hac habitasse platea dictumst. Pellentesque sodales vestibulum odio, et tempus leo faucibus pellentesque.  
+                        Cras mattis gravida mauris sit amet accumsan. Nunc vitae fermentum metus, nec tempus massa. 
+                        Proin pulvinar elit eu mauris pharetra placerat. Proin ullamcorper hendrerit mi ac lacinia. 
+                        Quisque elementum aliquet diam non eleifend. Curabitur ultrices mi enim, aliquet lacinia est fermentum et. Cras ut lorem risus.",
+                    StartDate = DateTime.Now.AddMonths(3).AddDays(20).AddHours(5),
+                    Duration = new TimeSpan(3, 45, 0),
+                    MaxParticipants = 25
                 });
         }
 

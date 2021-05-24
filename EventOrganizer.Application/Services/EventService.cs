@@ -1,4 +1,5 @@
-﻿using EventOrganizer.Application.Contracts.Persistence;
+﻿using AutoMapper;
+using EventOrganizer.Application.Contracts.Persistence;
 using EventOrganizer.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,14 +11,14 @@ namespace EventOrganizer.Application.Services
 {
     public class EventService 
     {
-        //private readonly IEventRepository _eventRepository;
+        //private readonly IUnitOfWork _unitOfWork;
+        //private readonly IMapper _mapper;
 
-        //public EventService(IEventRepository eventRepository)
+        //public EventService(IUnitOfWork unitOfWork, IMapper mapper)
         //{
-        //    _eventRepository = eventRepository;
+        //    _unitOfWork = unitOfWork;
+        //    _mapper = mapper;
         //}
 
-
-        
     }
 }
